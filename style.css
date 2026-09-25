@@ -40,15 +40,11 @@ a {
     position: absolute;
     top: 0;
     left: 0;
-
     width: 100%;
-
     padding: 30px 5%;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     z-index: 10;
 }
 
@@ -82,13 +78,10 @@ a {
 
 .hero {
     min-height: 100vh;
-
     position: relative;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     overflow: hidden;
 }
 
@@ -99,10 +92,8 @@ a {
 
 .hero-image::after {
     content: "";
-
     position: absolute;
     inset: 0;
-
     background:
         linear-gradient(
             90deg,
@@ -114,70 +105,50 @@ a {
 
 .hero-content {
     position: relative;
-
     width: 90%;
     max-width: 1000px;
-
     z-index: 2;
-
     text-align: center;
 }
 
 .eyebrow {
     margin-bottom: 20px;
-
     font-size: 11px;
     letter-spacing: 4px;
     text-transform: uppercase;
-
     color: #c5b9a5;
 }
 
 .hero h1 {
     font-family: Georgia, "Times New Roman", serif;
-
     font-size: clamp(70px, 12vw, 170px);
-
     font-weight: normal;
-
     line-height: 0.85;
-
     letter-spacing: -5px;
 }
 
 .hero h1 span {
     display: block;
-
     font-size: 0.48em;
-
     font-style: italic;
-
     letter-spacing: -1px;
-
     margin-top: 25px;
 }
 
 .hero-description {
     max-width: 450px;
-
     margin: 35px auto;
-
     color: #d1cdc5;
-
     font-size: 14px;
 }
 
 .explore-button {
     display: inline-block;
-
     padding: 14px 28px;
-
     border: 1px solid rgba(255, 255, 255, 0.5);
-
     font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
-
     transition:
         background 0.3s ease,
         color 0.3s ease;
@@ -187,8 +158,6 @@ a {
     background: #f2eee7;
     color: #11110f;
 }
-
-
 /* =========================
    GALLERY
 ========================= */
@@ -199,17 +168,21 @@ a {
 
 .section-heading {
     max-width: 700px;
-
     margin-bottom: 70px;
+}
+
+.section-heading span {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    opacity: 0.6;
+    margin-bottom: 12px;
 }
 
 .section-heading h2 {
     font-family: Georgia, "Times New Roman", serif;
-
     font-size: clamp(50px, 7vw, 100px);
-
     font-weight: normal;
-
     line-height: 0.95;
 }
 
@@ -220,80 +193,137 @@ a {
 
 .gallery-grid {
     display: grid;
-
     grid-template-columns: repeat(2, 1fr);
-
     gap: 25px;
 }
 
+
 .gallery-card {
     position: relative;
-
     height: 550px;
-
     overflow: hidden;
-
     background: #22221f;
 }
+
 
 .gallery-card.large {
     height: 700px;
 }
 
+
 .gallery-card.wide {
     grid-column: span 2;
-
     height: 600px;
 }
 
+
 .gallery-card img {
-    transition: transform 0.6s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
-.gallery-card:hover img {
-    transform: scale(1.05);
-}
+
+/* Dark overlay for readable text */
 
 .gallery-card::after {
     content: "";
-
     position: absolute;
     inset: 0;
 
     background:
         linear-gradient(
-            transparent 50%,
-            rgba(0, 0, 0, 0.8)
+            to top,
+            rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.15) 55%,
+            transparent
         );
+
+    pointer-events: none;
 }
+
+
+/* Text inside the image */
 
 .card-info {
     position: absolute;
-
     left: 30px;
     right: 30px;
-    bottom: 25px;
+    bottom: 28px;
 
     z-index: 2;
 
     display: flex;
-    align-items: end;
-    justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
 }
 
-.card-info span {
+
+.card-info > span {
     font-size: 11px;
     letter-spacing: 2px;
+    opacity: 0.7;
 }
+
+
+.card-info > div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
 
 .card-info h3 {
     font-family: Georgia, "Times New Roman", serif;
-
     font-size: 32px;
-
     font-weight: normal;
 }
 
+
+.card-info p {
+    margin: 0;
+    color: #d1cdc5;
+    font-size: 12px;
+}
+
+
+/* =========================
+   GALLERY RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    .gallery-section {
+        padding: 90px 25px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .gallery-card,
+    .gallery-card.large,
+    .gallery-card.wide {
+        height: 500px;
+    }
+
+    .gallery-card.wide {
+        grid-column: span 1;
+    }
+
+    .card-info {
+        left: 22px;
+        right: 22px;
+        bottom: 22px;
+    }
+
+    .card-info h3 {
+        font-size: 27px;
+    }
+
+}
 
 /* =========================
    ABOUT
@@ -301,23 +331,16 @@ a {
 
 .about-section {
     min-height: 80vh;
-
     padding: 120px 5%;
-
     display: grid;
-
     grid-template-columns: 1fr 2fr;
-
     align-items: center;
-
     border-top: 1px solid #33332f;
 }
 
 .about-number {
     font-family: Georgia, "Times New Roman", serif;
-
     font-size: clamp(100px, 18vw, 250px);
-
     color: #292924;
 }
 
@@ -327,13 +350,9 @@ a {
 
 .about-content h2 {
     font-family: Georgia, "Times New Roman", serif;
-
     font-size: clamp(45px, 7vw, 90px);
-
     font-weight: normal;
-
     line-height: 0.95;
-
     margin-bottom: 40px;
 }
 
@@ -343,10 +362,12 @@ a {
 
 .about-content > p:last-child {
     max-width: 500px;
-
     color: #aaa69f;
-
     font-size: 15px;
+}
+
+.about-content > p + p {
+    margin-top: 16px;
 }
 
 
@@ -356,30 +377,46 @@ a {
 
 footer {
     padding: 35px 5%;
-
     border-top: 1px solid #33332f;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     color: #aaa69f;
 }
 
-footer div {
+.footer-brand {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
 
-footer strong {
+.footer-brand strong {
     color: #f2eee7;
-
     font-size: 13px;
     letter-spacing: 3px;
 }
 
-footer span,
+.footer-brand span {
+    font-size: 11px;
+    opacity: 0.6;
+}
+
+.footer-links {
+    display: flex;
+    gap: 24px;
+}
+
+.footer-links a {
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+}
+
 footer p {
     font-size: 11px;
 }
@@ -409,6 +446,7 @@ footer p {
 
     .gallery-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
 
     .gallery-card,
@@ -423,119 +461,44 @@ footer p {
 
     .about-section {
         padding: 90px 25px;
-
         grid-template-columns: 1fr;
     }
 
     .about-number {
         font-size: 120px;
-
         margin-bottom: 30px;
     }
 
     footer {
         padding: 30px 25px;
-
         flex-direction: column;
-
         align-items: flex-start;
-
         gap: 20px;
     }
 
-    /* Edrei - Gallery and Image Cards */
-
-.gallery-section {
-    padding: 100px 6%;
-}
-
-.section-heading {
-    margin-bottom: 50px;
-}
-
-.section-heading span {
-    display: block;
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    opacity: 0.6;
-    margin-bottom: 12px;
-}
-
-.section-heading h2 {
-    font-size: clamp(2rem, 5vw, 4rem);
-    max-width: 700px;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px 30px;
-}
-
-.gallery-card {
-    cursor: pointer;
-}
-
-.gallery-image {
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 4 / 3;
-    background: #111;
-}
-
-.gallery-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition:
-        transform 0.6s ease,
-        filter 0.6s ease;
-}
-
-.gallery-card:hover .gallery-image img {
-    transform: scale(1.06);
-    filter: brightness(0.8);
-}
-
-.gallery-info {
-    display: grid;
-    grid-template-columns: 40px 1fr;
-    column-gap: 15px;
-    padding-top: 16px;
-}
-
-.gallery-info span {
-    font-size: 0.75rem;
-    opacity: 0.5;
-}
-
-.gallery-info h3 {
-    margin: 0;
-    font-size: 1.4rem;
-}
-
-.gallery-info p {
-    grid-column: 2;
-    margin: 7px 0 0;
-    font-size: 0.9rem;
-    opacity: 0.6;
-    line-height: 1.6;
+    .footer-links {
+        gap: 16px;
+    }
 }
 
 
-/* Gallery Responsive */
-
-@media (max-width: 700px) {
+@media (max-width: 600px) {
 
     .gallery-section {
         padding: 70px 5%;
     }
 
     .gallery-grid {
-        grid-template-columns: 1fr;
         gap: 45px;
     }
 
-}
+    .gallery-card,
+    .gallery-card.large,
+    .gallery-card.wide {
+        height: 500px;
+    }
+
+    footer {
+        gap: 10px;
+    }
 }
